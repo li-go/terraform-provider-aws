@@ -13,6 +13,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
+
 	"github.com/hashicorp/terraform-provider-aws/internal/conns"
 	"github.com/hashicorp/terraform-provider-aws/internal/experimental/intf"
 	"github.com/hashicorp/terraform-provider-aws/internal/experimental/nullable"
@@ -827,7 +828,8 @@ func New(_ context.Context) (*schema.Provider, error) {
 			"aws_ses_domain_identity":         ses.DataSourceDomainIdentity(),
 			"aws_ses_email_identity":          ses.DataSourceEmailIdentity(),
 
-			"aws_sesv2_dedicated_ip_pool": sesv2.DataSourceDedicatedIPPool(),
+			"aws_sesv2_dedicated_ip_pool":                  sesv2.DataSourceDedicatedIPPool(),
+			"aws_sesv2_custom_verification_email_template": sesv2.DataSourceCustomVerificationEmailTemplate(),
 
 			"aws_db_cluster_snapshot":            rds.DataSourceClusterSnapshot(),
 			"aws_db_event_categories":            rds.DataSourceEventCategories(),
@@ -2117,6 +2119,7 @@ func New(_ context.Context) (*schema.Provider, error) {
 			"aws_sesv2_email_identity":                      sesv2.ResourceEmailIdentity(),
 			"aws_sesv2_email_identity_feedback_attributes":  sesv2.ResourceEmailIdentityFeedbackAttributes(),
 			"aws_sesv2_email_identity_mail_from_attributes": sesv2.ResourceEmailIdentityMailFromAttributes(),
+			"aws_sesv2_custom_verification_email_template":  sesv2.ResourceCustomVerificationEmailTemplate(),
 
 			"aws_sfn_activity":      sfn.ResourceActivity(),
 			"aws_sfn_state_machine": sfn.ResourceStateMachine(),
